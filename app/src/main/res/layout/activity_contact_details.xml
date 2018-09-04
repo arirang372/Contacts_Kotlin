@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+    </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="24dp">
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_contact"
+                    android:layout_width="@dimen/large_contact_image_size"
+                    android:layout_height="@dimen/large_contact_image_size"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/user_large" />
+
+                <TextView
+                    android:id="@+id/txtContactName"
+                    android:layout_marginTop="@dimen/contact_details_text_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_contact"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:text="Cruz Roudabush" />
+
+                <TextView
+                    android:id="@+id/txtCompanyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtContactName"
+                    android:layout_centerHorizontal="true"
+                    android:text="Meridian Products" />
+
+            </RelativeLayout>
+            <include layout="@layout/include_phone_layout" />
+            <!--<RelativeLayout     android:id="@+id/phone_layout"-->
+                                <!--android:padding="@dimen/contact_details_text_padding"-->
+                                <!--android:layout_marginTop="20dp"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content">-->
+
+
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout android:padding="@dimen/contact_details_text_padding"-->
+                            <!--android:layout_marginTop="20dp"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content">-->
+
+                <!--<TextView   android:text="@string/lb_phone"-->
+                            <!--android:id="@+id/lb_phone"-->
+                            <!--android:layout_alignParentLeft="true"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textAppearance="?attr/textAppearanceListItem"/>-->
+
+                <!--<TextView   android:text="(907)345-1215"-->
+                            <!--android:id="@+id/txtPhoneNumber"-->
+                            <!--android:layout_below="@+id/lb_phone"-->
+                            <!--android:layout_marginTop="10dp"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textAppearance="?attr/textAppearanceListItem"/>-->
+
+                <!--<TextView   android:id="@+id/txtPhoneType"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:layout_alignBottom="@+id/txtPhoneNumber"-->
+                            <!--android:text="Home"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textAppearance="?attr/textAppearanceListItem"/>-->
+
+            <!--</RelativeLayout>-->
+
+
+            <RelativeLayout android:padding="@dimen/contact_details_text_padding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                <TextView   android:text="@string/lb_address"
+                            android:id="@+id/lb_address"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?attr/textAppearanceListItem"/>
+
+                <TextView   android:text=""
+                            android:id="@+id/txtAddress"
+                            android:layout_below="@+id/lb_address"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?attr/textAppearanceListItem"/>
+
+            </RelativeLayout>
+            <RelativeLayout android:padding="@dimen/contact_details_text_padding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                <TextView   android:text="@string/lb_birthdate"
+                            android:id="@+id/lb_birthdate"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?attr/textAppearanceListItem"/>
+
+                <TextView   android:text=""
+                            android:id="@+id/txtBirthDate"
+                            android:layout_below="@+id/lb_birthdate"
+                            android:layout_marginTop="@dimen/contact_details_text_padding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?attr/textAppearanceListItem"/>
+
+            </RelativeLayout>
+            <RelativeLayout android:padding="@dimen/contact_details_text_padding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView   android:text="@string/lb_email"
+                                        android:id="@+id/lb_email"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?attr/textAppearanceListItem"/>
+
+                            <TextView   android:text="Cruz.Roudabush@solstice.com"
+                                        android:id="@+id/txtEmail"
+                                        android:layout_below="@+id/lb_email"
+                                        android:layout_marginTop="@dimen/contact_details_text_padding"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?attr/textAppearanceListItem"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+   </ScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

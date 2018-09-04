@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout     xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:id="@+id/viewMain"
+                    android:padding="10dp">
+
+        <ImageView  android:id="@+id/iv_contact"
+                    android:contentDescription="@string/default_image_contact"
+                    android:scaleType="centerCrop"
+                    android:layout_width="@dimen/contact_list_picture_size"
+                    android:layout_height="@dimen/contact_list_picture_size"
+                    android:src="@drawable/user_small"
+                    android:layout_alignParentLeft="true"/>
+
+        <RelativeLayout     android:id="@+id/other_items_layout"
+                            android:layout_marginLeft="@dimen/contact_listview_name_marginRight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/iv_contact">
+
+            <ImageView   android:id="@+id/iv_favorite"
+                         android:scaleType="centerCrop"
+                         android:src="@drawable/favorite_true"
+                         android:layout_alignParentLeft="true"
+                         android:contentDescription="@string/indicator_favorite_contact"
+                         android:layout_width="@dimen/contact_list_favorite_size"
+                         android:layout_height="@dimen/contact_list_favorite_size" />
+
+            <TextView    android:id="@+id/txtContactName"
+                         android:textStyle="bold"
+                         android:text="Bernard Laboy"
+                         android:layout_alignParentTop="true"
+                         android:textAppearance="?attr/textAppearanceListItem"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="@dimen/contact_listview_contact_name_marginLeft"
+                         android:layout_toRightOf="@+id/iv_favorite"
+                        />
+
+            <TextView    android:id="@+id/txtCompanyName"
+                        android:layout_below="@+id/txtContactName"
+                        android:text="Century 21"
+                        android:textAppearance="?attr/textAppearanceListItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/contact_listview_contact_name_marginLeft"
+                         android:layout_toRightOf="@+id/iv_favorite"/>
+
+
+        </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout       xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:padding="@dimen/contact_details_text_padding"
+                    android:id="@+id/phone_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout   android:id="@+id/work_phone_layout"
+                                      android:layout_marginTop="@dimen/phone_layout_marginTop"
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content">
+
+                                        <TextView   android:text="@string/lb_phone"
+                                                    android:id="@+id/lb_work_phone"
+                                                    android:layout_alignParentLeft="true"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+
+                                        <TextView   android:id="@+id/txtWorkPhoneNumber"
+                                                    android:layout_below="@+id/lb_work_phone"
+                                                    android:layout_marginTop="@dimen/contact_details_text_padding"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+
+                                        <TextView   android:layout_alignParentRight="true"
+                                                    android:layout_alignBottom="@+id/txtWorkPhoneNumber"
+                                                    android:text="@string/work"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+                    </RelativeLayout>
+                    <RelativeLayout     android:id="@+id/home_phone_layout"
+                                        android:layout_marginTop="@dimen/phone_layout_marginTop"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView   android:text="@string/lb_phone"
+                                                    android:id="@+id/lb_home_phone"
+                                                    android:layout_alignParentLeft="true"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+
+                                        <TextView   android:id="@+id/txtHomePhoneNumber"
+                                                    android:layout_below="@+id/lb_home_phone"
+                                                    android:layout_marginTop="@dimen/contact_details_text_padding"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+
+                                        <TextView   android:layout_alignParentRight="true"
+                                                    android:layout_alignBottom="@+id/txtHomePhoneNumber"
+                                                    android:text="@string/home"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+                    </RelativeLayout>
+                    <RelativeLayout     android:id="@+id/mobile_phone_layout"
+                                        android:layout_marginTop="@dimen/phone_layout_marginTop"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView   android:text="@string/lb_phone"
+                                                    android:id="@+id/lb_mobile_phone"
+                                                    android:layout_alignParentLeft="true"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+
+                                        <TextView
+                                                    android:id="@+id/txtMobilePhoneNumber"
+                                                    android:layout_below="@+id/lb_mobile_phone"
+                                                    android:layout_marginTop="@dimen/contact_details_text_padding"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+
+                                        <TextView   android:id="@+id/txtPhoneType"
+                                                    android:layout_alignParentRight="true"
+                                                    android:layout_alignBottom="@+id/txtMobilePhoneNumber"
+                                                    android:text="@string/mobile"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAppearance="?attr/textAppearanceListItem"/>
+                    </RelativeLayout>
+</LinearLayout>

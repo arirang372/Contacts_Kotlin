@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="contact_listview_name_marginRight">25dp</dimen>
+    <dimen name="contact_listview_contact_name_marginLeft">15dp</dimen>
+    <dimen name="contact_list_picture_size">60dp</dimen>
+    <dimen name="contact_list_favorite_size">24dp</dimen>
+    <dimen name="detail_drop_height">200dp</dimen>
+    <dimen name="large_contact_image_size">100dp</dimen>
+
+    <dimen name="contact_details_text_padding">10dp</dimen>
+    <dimen name="contact_details_text_paddingTop">5dp</dimen>
+    <dimen name="phone_layout_marginTop">20dp</dimen>
+    </resources>

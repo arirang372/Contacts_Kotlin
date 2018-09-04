@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="menu_name">favorite</string>
+    <string name="lb_favorite">FAVORITE CONTACTS</string>
+    <string name="lb_other_contacts">OTHER CONTACTS</string>
+
+    <string name="lb_phone">PHONE:</string>
+    <string name="lb_address">ADDRESS:</string>
+    <string name="lb_birthdate">BIRTHDATE:</string>
+    <string name="lb_email">EMAIL:</string>
+
+    <string name="home">Home</string>
+    <string name="work">Work</string>
+    <string name="mobile">Mobile</string>
+
+    <string name="default_image_contact">default image for contact profile pictures</string>
+    <string name="indicator_favorite_contact">show us whether the contact is favorite or not</string>
+</resources>
