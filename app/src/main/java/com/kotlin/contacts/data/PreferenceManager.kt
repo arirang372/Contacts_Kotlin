@@ -19,7 +19,7 @@ class PreferenceManager(c: Context)
         editor.apply()
     }
 
-    fun getStringValue(key:String) : String
+    fun getStringValue(key:String) : String?
     {
         return pref.getString(key, "")
     }

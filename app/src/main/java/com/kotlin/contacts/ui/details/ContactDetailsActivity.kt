@@ -21,36 +21,33 @@ import com.kotlin.contacts.models.Phone
 import java.io.Serializable
 
 
-class ContactDetailsActivity : AppCompatActivity()
-{
+class ContactDetailsActivity : AppCompatActivity() {
     lateinit var presenter: ContactDetailsPresenter
-    lateinit var toolBar : Toolbar
+    lateinit var toolBar: Toolbar
 
-    lateinit var txtContactName : TextView
-    lateinit var txtCompanyName : TextView
+    lateinit var txtContactName: TextView
+    lateinit var txtCompanyName: TextView
 
-    lateinit var work_phone_layout : RelativeLayout
-    lateinit var txtWorkPhoneNumber : TextView
+    lateinit var work_phone_layout: RelativeLayout
+    lateinit var txtWorkPhoneNumber: TextView
 
-    lateinit var home_phone_layout : RelativeLayout
-    lateinit var txtHomePhoneNumber : TextView
+    lateinit var home_phone_layout: RelativeLayout
+    lateinit var txtHomePhoneNumber: TextView
 
-    lateinit var mobile_phone_layout : RelativeLayout
-    lateinit var txtMobilePhoneNumber : TextView
+    lateinit var mobile_phone_layout: RelativeLayout
+    lateinit var txtMobilePhoneNumber: TextView
 
-    lateinit var txtAddress : TextView
-    lateinit var txtBirthDate : TextView
-    lateinit var txtEmail : TextView
-    lateinit var iv_contact : ImageView
+    lateinit var txtAddress: TextView
+    lateinit var txtBirthDate: TextView
+    lateinit var txtEmail: TextView
+    lateinit var iv_contact: ImageView
 
-    lateinit var btnFavorite : MenuItem
-    lateinit var contact : Contact
+    lateinit var btnFavorite: MenuItem
+    lateinit var contact: Contact
 
-    companion object
-    {
+    companion object {
         val CONTACT = "contact"
-        fun startActivity(context: Activity, contact: Serializable)
-        {
+        fun startActivity(context: Activity, contact: Serializable) {
             var b = Bundle()
             b.putSerializable(CONTACT, contact)
             var intent = Intent(context, ContactDetailsActivity::class.java)
@@ -59,17 +56,15 @@ class ContactDetailsActivity : AppCompatActivity()
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_details)
         init()
     }
 
-    fun init()
-    {
+    fun init() {
         var b = intent.extras
-        contact = b.getSerializable(CONTACT) as Contact
+        contact = b?.getSerializable(CONTACT) as Contact
         presenter = ContactDetailsPresenter(this, Model, contact)
 
         with(this)
@@ -98,19 +93,17 @@ class ContactDetailsActivity : AppCompatActivity()
         presenter.onCreate()
     }
 
-    fun setupToolbar()
-    {
+    fun setupToolbar() {
         setSupportActionBar(toolBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    fun bindData(contact: Contact)
-    {
-       var requestOptions = RequestOptions()
-       requestOptions.run{
-           placeholder(R.drawable.user_large)
-           error(R.drawable.user_large)
-       }
+    fun bindData(contact: Contact) {
+        var requestOptions = RequestOptions()
+        requestOptions.run {
+            placeholder(R.drawable.user_large)
+            error(R.drawable.user_large)
+        }
 
         Glide.with(this)
                 .setDefaultRequestOptions(requestOptions)
@@ -132,57 +125,45 @@ class ContactDetailsActivity : AppCompatActivity()
     }
 
 
-    fun bindPhone(phone: Phone)
-    {
-        if(TextUtils.isEmpty(phone.work))
+    fun bindPhone(phone: Phone) {
+        if (TextUtils.isEmpty(phone.work))
             work_phone_layout.visibility = View.GONE
-        else
-        {
+        else {
             work_phone_layout.visibility = View.VISIBLE
             txtWorkPhoneNumber.text = phone.work
         }
 
-        if(TextUtils.isEmpty(phone.home))
+        if (TextUtils.isEmpty(phone.home))
             home_phone_layout.visibility = View.GONE
-        else
-        {
+        else {
             home_phone_layout.visibility = View.VISIBLE
             txtHomePhoneNumber.text = phone.home
         }
 
-        if(TextUtils.isEmpty(phone.mobile))
-        {
+        if (TextUtils.isEmpty(phone.mobile)) {
             mobile_phone_layout.visibility = View.GONE
-        }
-        else
-        {
+        } else {
             mobile_phone_layout.visibility = View.VISIBLE
             txtMobilePhoneNumber.text = phone.mobile
         }
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean
-    {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.detail_menu, menu)
         btnFavorite = menu?.findItem(R.id.btnFavorite) as MenuItem
-        btnFavorite.setIcon( if(contact.isFavorite) R.drawable.favorite_true else R.drawable.favorite_false)
+        btnFavorite.setIcon(if (contact.isFavorite) R.drawable.favorite_true else R.drawable.favorite_false)
 
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean
-    {
-        when(item?.itemId)
-        {
-            R.id.btnFavorite->{
-                if(contact.isFavorite)
-                {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.btnFavorite -> {
+                if (contact.isFavorite) {
                     contact.isFavorite = false;
                     btnFavorite.setIcon(R.drawable.favorite_false)
-                }
-                else
-                {
+                } else {
                     contact.isFavorite = true
                     btnFavorite.setIcon(R.drawable.favorite_true)
                 }
@@ -193,20 +174,17 @@ class ContactDetailsActivity : AppCompatActivity()
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onPause()
-    {
+    override fun onPause() {
         super.onPause()
         presenter.onPause()
     }
 
-    override fun onResume()
-    {
+    override fun onResume() {
         super.onResume()
         presenter.onResume()
     }
 
-    override fun onDestroy()
-    {
+    override fun onDestroy() {
         super.onDestroy()
 
 

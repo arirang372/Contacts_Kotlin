@@ -12,11 +12,9 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import java.util.List
 import com.kotlin.contacts.models.Contact
 import com.kotlin.contacts.models.Model
 import com.kotlin.contacts.ui.details.ContactDetailsActivity
-import com.kotlin.contacts.ui.details.ContactDetailsActivity.Companion.CONTACT
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection
@@ -24,27 +22,24 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar
 import rx.subscriptions.CompositeSubscription
 import java.io.Serializable
 
-class ContactListActivity : AppCompatActivity()
-{
-    lateinit var presenter : ContactListPresenter
-    lateinit var toolbar : Toolbar
-    lateinit var progressBar : MaterialProgressBar
-    lateinit var rv_contacts : RecyclerView
+class ContactListActivity : AppCompatActivity() {
+    lateinit var presenter: ContactListPresenter
+    lateinit var toolbar: Toolbar
+    lateinit var progressBar: MaterialProgressBar
+    lateinit var rv_contacts: RecyclerView
     lateinit var adapter: SectionedRecyclerViewAdapter
     lateinit var subscriptions: CompositeSubscription
-    lateinit var favorites : MutableList<Contact>
+    lateinit var favorites: MutableList<Contact>
     lateinit var otherContacts: MutableList<Contact>
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_list)
 
         init()
     }
 
-    fun init()
-    {
+    fun init() {
         presenter = ContactListPresenter(this, Model)
 
         with(this)
@@ -62,8 +57,7 @@ class ContactListActivity : AppCompatActivity()
     }
 
 
-    fun setupUI()
-    {
+    fun setupUI() {
         adapter.addSection(ContactsSection("FAVORITE CONTACTS", this.favorites))
         adapter.addSection(ContactsSection("OTHER CONTACTS", this.otherContacts))
 
@@ -74,30 +68,26 @@ class ContactListActivity : AppCompatActivity()
         }
     }
 
-    inner class ContactsSection(title: String, contacts : MutableList<Contact>
+    inner class ContactsSection(title: String, contacts: MutableList<Contact>
     ) : StatelessSection(SectionParameters.Builder(R.layout.single_contact_rv_item)
-                        .headerResourceId(R.layout.section_header).build())
-    {
-        var title : String = title
-        var contacts : MutableList<Contact> = contacts
+            .headerResourceId(R.layout.section_header).build()) {
+        var title: String = title
+        var contacts: MutableList<Contact> = contacts
 
-        override fun getItemViewHolder(view: View?): RecyclerView.ViewHolder = ItemViewHolder(view)
+        override fun getItemViewHolder(view: View): RecyclerView.ViewHolder = ItemViewHolder(view)
 
-        override fun getHeaderViewHolder(view: View?): RecyclerView.ViewHolder = HeaderViewHolder(view)
+        override fun getHeaderViewHolder(view: View): RecyclerView.ViewHolder = HeaderViewHolder(view)
 
-        override fun onBindHeaderViewHolder(holder: RecyclerView.ViewHolder?)
-        {
-            var vh : HeaderViewHolder = holder as HeaderViewHolder
+        override fun onBindHeaderViewHolder(holder: RecyclerView.ViewHolder?) {
+            var vh: HeaderViewHolder = holder as HeaderViewHolder
             vh.txtSectionTitle.text = title
         }
 
-        override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder?, position: Int)
-        {
+        override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
 
-            var viewHolder : ItemViewHolder = holder as ItemViewHolder
-            var c : Contact = contacts.get(position)
-            if(c != null)
-            {
+            var viewHolder: ItemViewHolder = holder as ItemViewHolder
+            var c: Contact = contacts.get(position)
+            if (c != null) {
                 var requestOptions = RequestOptions()
                 requestOptions.run {
                     placeholder(R.drawable.user_small)
@@ -111,7 +101,7 @@ class ContactListActivity : AppCompatActivity()
 
                 with(holder)
                 {
-                    iv_favorite.setImageResource(if(c.isFavorite) R.drawable.favorite_true
+                    iv_favorite.setImageResource(if (c.isFavorite) R.drawable.favorite_true
                     else R.drawable.favorite_false)
                     txtContactName.text = c.name
                     txtCompanyName.text = c.companyName
@@ -130,9 +120,8 @@ class ContactListActivity : AppCompatActivity()
 
     }
 
-    class HeaderViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
-    {
-        var txtSectionTitle : TextView
+    class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var txtSectionTitle: TextView
 
         init {
             txtSectionTitle = itemView?.findViewById<TextView>(R.id.txtSectionTitle) as TextView
@@ -140,13 +129,12 @@ class ContactListActivity : AppCompatActivity()
     }
 
 
-    class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
-    {
-        var viewMain : RelativeLayout
-        var iv_contact : ImageView
-        var iv_favorite : ImageView
-        var txtContactName : TextView
-        var txtCompanyName : TextView
+    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var viewMain: RelativeLayout
+        var iv_contact: ImageView
+        var iv_favorite: ImageView
+        var txtContactName: TextView
+        var txtCompanyName: TextView
 
         init {
             viewMain = itemView?.findViewById<RelativeLayout>(R.id.viewMain) as RelativeLayout
@@ -157,27 +145,23 @@ class ContactListActivity : AppCompatActivity()
         }
     }
 
-    override fun onPause()
-    {
+    override fun onPause() {
         super.onPause()
         presenter.onPause()
     }
 
-    override fun onResume()
-    {
+    override fun onResume() {
         super.onResume()
         presenter.onResume()
     }
 
-    override fun onDestroy()
-    {
+    override fun onDestroy() {
         super.onDestroy()
         subscriptions?.unsubscribe()
     }
 
-    fun showNetworkLoading(networkInUse: Boolean)
-    {
-        progressBar.visibility = if(networkInUse) View.VISIBLE else View.INVISIBLE
+    fun showNetworkLoading(networkInUse: Boolean) {
+        progressBar.visibility = if (networkInUse) View.VISIBLE else View.INVISIBLE
     }
 
 }
