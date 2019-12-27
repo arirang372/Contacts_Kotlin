@@ -1,12 +1,12 @@
 package com.kotlin.contacts.rest
 
 import com.kotlin.contacts.data.DataManager
-import rx.subjects.BehaviorSubject
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import rx.subjects.BehaviorSubject
 import java.util.concurrent.TimeUnit
 
 class RemoteDataLoader {
@@ -20,15 +20,15 @@ class RemoteDataLoader {
 
     init {
         var retrofitBuilder: Retrofit.Builder =
-                Retrofit.Builder().addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create())
                         .baseUrl(BASE_URL)
 
         var clientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-        clientBuilder?.run{
-             readTimeout(HTTP_READ_TIMEOUT.toLong(), TimeUnit.SECONDS)
-             writeTimeout(HTTP_WRITE_TIMEOUT.toLong(), TimeUnit.SECONDS)
-             connectTimeout(HTTP_CONNECT_TIMEOUT.toLong(), TimeUnit.SECONDS)
+        clientBuilder?.run {
+            readTimeout(HTTP_READ_TIMEOUT.toLong(), TimeUnit.SECONDS)
+            writeTimeout(HTTP_WRITE_TIMEOUT.toLong(), TimeUnit.SECONDS)
+            connectTimeout(HTTP_CONNECT_TIMEOUT.toLong(), TimeUnit.SECONDS)
             retryOnConnectionFailure(true)
         }
 
@@ -41,7 +41,6 @@ class RemoteDataLoader {
         service = retrofitBuilder.build().create(ContactService::class.java)
     }
 
-    fun loadAllContacts(dm: DataManager, networkLoading : BehaviorSubject<Boolean>)
-            = service?.getContacts()
+    fun loadAllContacts(dm: DataManager, networkLoading: BehaviorSubject<Boolean>) = service?.getContacts()
 
 }
